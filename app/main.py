@@ -2,11 +2,16 @@ import psycopg2
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
+from urllib.parse import urlparse
 import os
 
 app = Flask(__name__)
 CORS(app)
 load_dotenv('.env')
+
+#Heroku DB Test
+url = urlparse(os.environ.get('DATABASE_URL'))
+db = "dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname)
 
 def get_db_connection():
     conn = psycopg2.connect(host=os.getenv("PG_HOST"),

@@ -1,10 +1,16 @@
 import psycopg2
+import os
+from urllib.parse import urlparse
 
-conn = psycopg2.connect(
-        host="localhost",
-        database="swiperz_db",
-        user='swiperz',
-        password='swiperz')
+# conn = psycopg2.connect(host=os.getenv("PG_HOST"),
+#                             database=os.getenv("PG_DATABASE"),
+#                             user=os.getenv("PG_USER"),
+#                             password=os.getenv("PG_PASSWORD"),
+#                             port=os.getenv("PG_PORT"))
+
+url = urlparse(os.environ.get('DATABASE_URL'))
+db = "dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname)
+conn = psycopg2.connect(db)
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
