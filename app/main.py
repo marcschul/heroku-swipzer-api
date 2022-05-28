@@ -11,14 +11,20 @@ load_dotenv('.env')
 
 #Heroku DB Test
 url = urlparse(os.environ.get('DATABASE_URL'))
+print(url)
 db = "dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname)
+#------------
+
+# def get_db_connection():
+#     conn = psycopg2.connect(host=os.getenv("PG_HOST"),
+#                             database=os.getenv("PG_DATABASE"),
+#                             user=os.getenv("PG_USER"),
+#                             password=os.getenv("PG_PASSWORD"),
+#                             port=os.getenv("PG_PORT"))
+#     return conn
 
 def get_db_connection():
-    conn = psycopg2.connect(host=os.getenv("PG_HOST"),
-                            database=os.getenv("PG_DATABASE"),
-                            user=os.getenv("PG_USER"),
-                            password=os.getenv("PG_PASSWORD"),
-                            port=os.getenv("PG_PORT"))
+    conn = psycopg2.connect(db)
     return conn
 
 @app.route('/')

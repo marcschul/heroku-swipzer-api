@@ -8,9 +8,11 @@ from urllib.parse import urlparse
 #                             password=os.getenv("PG_PASSWORD"),
 #                             port=os.getenv("PG_PORT"))
 
+## HEROKU DB TEST
 url = urlparse(os.environ.get('DATABASE_URL'))
 db = "dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname)
 conn = psycopg2.connect(db)
+## ------------
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
