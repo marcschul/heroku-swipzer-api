@@ -3,11 +3,13 @@ import os
 from urllib.parse import urlparse
 
 def init():
+  # LOCAL
   # conn = psycopg2.connect(host=os.getenv("PG_HOST"),
   #                           database=os.getenv("PG_DATABASE"),
   #                           user=os.getenv("PG_USER"),
   #                           password=os.getenv("PG_PASSWORD"),
   #                           port=os.getenv("PG_PORT"))
+#------------------
 
 ## HEROKU DB TEST
   url = urlparse(os.environ.get('DATABASE_URL'))
