@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swiperz Flask API</title>
+    <style>
+        nav a {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 10px;
+            padding-left: 20px;
+            text-decoration: none;
+        }
+
+        .game {
+            padding: 20px;
+            margin: 10px;
+            background-color: #f7f4f4;
+        }
+
+        .table td {
+            border: 1px solid #d64161;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Swiperz Flask API</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

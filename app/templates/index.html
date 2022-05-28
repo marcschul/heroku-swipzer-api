@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='game'>
+  <h1>Games</h1>
+  <table class='table'>
+
+    <thead>
+      <td><b>id</b></td>
+      <td><b>player1</b></td>
+      <td><b>player2</b></td>
+      <td><b>current_player</b></td>
+      <td><b>game_over</b></td>
+      <td><b>message</b></td>
+      <td><b>board</b></td>
+    </thead>
+
+    <tbody>
+      {% for game in games %}
+        <tr>
+          <td>{{game[0]}}</td>
+          <td>{{game[1]}}</td>
+          <td>{{game[2]}}</td>
+          <td>{{game[3]}}</td>
+          <td>{{game[4]}}</td>
+          <td>{{game[5]}}</td>
+          <td>{{game[6]}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
